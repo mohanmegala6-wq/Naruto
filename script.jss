@@ -1,65 +1,32 @@
-const scene = document.querySelector(".scene");
 const loveButton = document.getElementById("loveButton");
 const loveMessage = document.getElementById("loveMessage");
 
-// Create falling cherry blossom petals
-function createPetal() {
-    const petal = document.createElement("div");
-
-    petal.className = "petal";
-    petal.textContent = "🌸";
-
-    petal.style.left = Math.random() * 100 + "vw";
-
-    petal.style.fontSize =
-        (15 + Math.random() * 20) + "px";
-
-    petal.style.animationDuration =
-        (4 + Math.random() * 5) + "s";
-
-    scene.appendChild(petal);
-
-    setTimeout(() => {
-        petal.remove();
-    }, 9000);
-}
-
-// Create floating hearts
-function createHeart() {
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-    heart.textContent = "❤️";
-
-    heart.style.left = Math.random() * 100 + "vw";
-
-    heart.style.fontSize =
-        (15 + Math.random() * 20) + "px";
-
-    heart.style.animationDuration =
-        (4 + Math.random() * 3) + "s";
-
-    scene.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 8000);
-}
-
-// Show love when the button is clicked
 loveButton.addEventListener("click", function () {
-
     loveMessage.textContent =
-        "Naruto ❤️ Hinata — Forever Together! 💕";
+        "Naruto ❤️ Hinata — A love that lasts forever! 🌸💖";
 
-    // Create a burst of hearts
-    for (let i = 0; i < 20; i++) {
-        setTimeout(createHeart, i * 100);
+    for (let i = 0; i < 15; i++) {
+        createFloatingItem("heart");
     }
-
 });
 
-// Start the animation
-setInterval(createPetal, 300);
+function createFloatingItem(type) {
+    const item = document.createElement("span");
 
-setInterval(createHeart, 1000);
+    item.className = type;
+    item.textContent = type === "heart" ? "❤️" : "🌸";
+
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.animationDuration = (3 + Math.random() * 4) + "s";
+    item.style.fontSize = (18 + Math.random() * 20) + "px";
+
+    document.body.appendChild(item);
+
+    setTimeout(function () {
+        item.remove();
+    }, 7000);
+}
+
+setInterval(function () {
+    createFloatingItem(Math.random() > 0.5 ? "heart" : "flower");
+}, 500);
