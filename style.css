@@ -5,169 +5,93 @@
 }
 
 body {
+    min-height: 100vh;
+    overflow-x: hidden;
     font-family: Arial, sans-serif;
-    overflow: hidden;
+    background: linear-gradient(135deg, #ffb6d5, #ffd9f0, #f5b4ed);
+    color: #a20c58;
 }
 
-.scene {
-    width: 100%;
-    height: 100vh;
-
+.container {
+    min-height: 100vh;
+    padding: 35px 15px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-
-    position: relative;
-    overflow: hidden;
-
-    background: linear-gradient(
-        135deg,
-        #ffc0cb,
-        #ffb6e6,
-        #d8b4fe
-    );
-}
-
-.glow {
-    position: absolute;
-
-    width: 300px;
-    height: 300px;
-
-    background: #fff0f5;
-    border-radius: 50%;
-
-    filter: blur(80px);
-
-    animation: glowEffect 4s infinite alternate;
-}
-
-.content {
-    position: relative;
-    z-index: 2;
-
+    justify-content: center;
     text-align: center;
-    padding: 20px;
-
-    animation: appear 2s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .couple-image {
-    width: min(85vw, 600px);
-    max-height: 60vh;
-
+    display: block;
+    width: min(320px, 85vw);
+    height: 250px;
     object-fit: contain;
-
+    margin-bottom: 20px;
     border-radius: 20px;
-
-    box-shadow: 0 0 30px #ff69b4;
+    filter: drop-shadow(0 8px 15px #e7549580);
 }
 
 h1 {
-    color: #a4135c;
-    margin-top: 20px;
-    font-size: clamp(28px, 5vw, 45px);
+    font-size: clamp(32px, 6vw, 56px);
+    margin-bottom: 18px;
 }
 
-.message {
-    color: #7b2451;
-    font-size: 18px;
-    margin-top: 12px;
+.subtitle {
+    font-size: clamp(18px, 3vw, 24px);
+    color: #8b2855;
+    margin-bottom: 25px;
 }
 
 button {
-    margin-top: 20px;
-
-    padding: 12px 25px;
-
-    background: #ff4f91;
+    background: #ff438b;
     color: white;
-
     border: none;
-    border-radius: 25px;
-
-    font-size: 17px;
+    border-radius: 35px;
+    padding: 17px 32px;
+    font-size: 19px;
     cursor: pointer;
-
-    transition: 0.3s;
+    transition: transform 0.3s, background 0.3s;
 }
 
 button:hover {
-    background: #e91e63;
-    transform: scale(1.1);
+    background: #e91e75;
+    transform: scale(1.08);
 }
 
-#loveMessage {
-    margin-top: 15px;
-    color: #a4135c;
-    font-size: 20px;
-    font-weight: bold;
+h2 {
+    margin-top: 25px;
+    font-size: clamp(18px, 3vw, 25px);
 }
 
-.petal {
-    position: absolute;
+.heart,
+.flower {
+    position: fixed;
     top: -40px;
-
     pointer-events: none;
-
-    animation: falling linear forwards;
+    animation: fall linear forwards;
+    z-index: 0;
 }
 
 .heart {
-    position: absolute;
-    bottom: -40px;
-
-    pointer-events: none;
-
-    animation: floating linear forwards;
+    color: #ff438b;
 }
 
-@keyframes falling {
-    from {
-        transform: translateY(0) rotate(0deg);
-    }
+.flower {
+    color: #f34b91;
+}
 
+@keyframes fall {
     to {
-        transform: translateY(110vh) rotate(720deg);
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.2;
     }
 }
 
-@keyframes floating {
-    from {
-        transform: translateY(0) scale(0.5);
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    to {
-        transform: translateY(-110vh) scale(1.5);
-        opacity: 0;
-    }
-}
-
-@keyframes glowEffect {
-    from {
-        transform: scale(0.8);
-        opacity: 0.5;
-    }
-
-    to {
-        transform: scale(1.3);
-        opacity: 1;
-    }
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
+@media (max-width: 480px) {
+    .couple-image {
+        height: 210px;
     }
 }
