@@ -3,7 +3,7 @@ const loveMessage = document.getElementById("loveMessage");
 
 loveButton.addEventListener("click", function () {
     loveMessage.textContent =
-        "Sathish ❤️ Megala — A love that lasts forever! 🌸💖";
+        "Naruto ❤️ Hinata — A love that lasts forever! 🌸💖";
 
     for (let i = 0; i < 15; i++) {
         createFloatingItem("heart");
